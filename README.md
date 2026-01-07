@@ -60,8 +60,8 @@ git clone <your-repo-url>
 cd notes-app
 npm install
 
-# 2. Create .env.local
-echo "MONGODB_URI=mongodb://localhost:27017/notes-app" > .env.local
+# 2. Create .env
+echo "MONGODB_URI=mongodb://localhost:27017/notes-app" > .env
 
 # 3. Run development server
 npm run dev
@@ -129,7 +129,7 @@ git push -u origin main
 
 ### Environment Variables on Vercel
 
-> ⚠️ **Important**: Never commit `.env.local` to git!
+> ⚠️ **Important**: Never commit `.env` to git!
 
 To update environment variables after deployment:
 1. Go to Vercel Dashboard → Your Project → Settings → Environment Variables

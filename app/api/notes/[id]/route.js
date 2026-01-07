@@ -3,13 +3,11 @@ import connectDB from '@/lib/mongodb';
 import Note from '@/models/Note';
 import mongoose from 'mongoose';
 
-// GET a single note by ID
 export async function GET(request, { params }) {
   try {
     await connectDB();
     const { id } = await params;
 
-    // Validate ObjectId
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         { success: false, error: 'Invalid note ID' },
@@ -35,14 +33,12 @@ export async function GET(request, { params }) {
   }
 }
 
-// PUT update a note by ID
 export async function PUT(request, { params }) {
   try {
     await connectDB();
     const { id } = await params;
     const body = await request.json();
 
-    // Validate ObjectId
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         { success: false, error: 'Invalid note ID' },
@@ -50,7 +46,6 @@ export async function PUT(request, { params }) {
       );
     }
 
-    // Validate required fields
     if (!body.title || !body.content) {
       return NextResponse.json(
         { success: false, error: 'Title and content are required' },
@@ -80,13 +75,11 @@ export async function PUT(request, { params }) {
   }
 }
 
-// DELETE a note by ID
 export async function DELETE(request, { params }) {
   try {
     await connectDB();
     const { id } = await params;
 
-    // Validate ObjectId
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         { success: false, error: 'Invalid note ID' },

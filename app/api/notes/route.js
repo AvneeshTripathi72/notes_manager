@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Note from '@/models/Note';
 
-// GET all notes
 export async function GET() {
   try {
     await connectDB();
@@ -16,13 +15,11 @@ export async function GET() {
   }
 }
 
-// POST create a new note
 export async function POST(request) {
   try {
     await connectDB();
     const body = await request.json();
 
-    // Validate required fields
     if (!body.title || !body.content) {
       return NextResponse.json(
         { success: false, error: 'Title and content are required' },
